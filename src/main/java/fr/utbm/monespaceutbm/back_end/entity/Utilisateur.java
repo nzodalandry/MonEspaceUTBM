@@ -92,6 +92,16 @@ public class Utilisateur implements Serializable {
     @Size(max = 50)
     @Column(name = "ADRCOMP")
     private String adrcomp;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 150)
+    @Column(name = "PASSWORD")
+    private String password;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "USERNAME")
+    private String username;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "utilisateur")
     private Collection<Privileges> privilegesCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "iduser")
@@ -110,7 +120,7 @@ public class Utilisateur implements Serializable {
         this.iduser = iduser;
     }
 
-    public Utilisateur(Long iduser, String nomuser, Character sexeuser, String mailuser, String adrvoie, String adrcp, String adrville, String adrpays) {
+    public Utilisateur(Long iduser, String nomuser, Character sexeuser, String mailuser, String adrvoie, String adrcp, String adrville, String adrpays, String password, String username) {
         this.iduser = iduser;
         this.nomuser = nomuser;
         this.sexeuser = sexeuser;
@@ -119,6 +129,8 @@ public class Utilisateur implements Serializable {
         this.adrcp = adrcp;
         this.adrville = adrville;
         this.adrpays = adrpays;
+        setPassword(password);
+        this.username = username;
     }
 
     public Long getIduser() {
@@ -223,6 +235,22 @@ public class Utilisateur implements Serializable {
 
     public void setAdrcomp(String adrcomp) {
         this.adrcomp = adrcomp;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    private void setPassword(String password) {
+        this.password = password.hashCode() + "";
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @XmlTransient
