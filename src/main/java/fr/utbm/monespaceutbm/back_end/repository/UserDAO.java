@@ -7,7 +7,9 @@ package fr.utbm.monespaceutbm.back_end.repository;
 
 import fr.utbm.monespaceutbm.back_end.entity.Utilisateur;
 import fr.utbm.monespaceutbm.back_end.tools.HibernateUtil;
+import java.util.List;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
@@ -16,15 +18,30 @@ import org.hibernate.Session;
  */
 public class UserDAO {
 
-    private Session session;
+    private static Session session;
 
-    public Integer addUser(Utilisateur user) {
+    public Utilisateur addOrUpdateUser(Utilisateur user) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            Integer insertId = (Integer) session.save(user);
+            if(user.getIduser() != null)
+                session.update(user);
+            else
+                user.setIduser((Long) session.save(user));
             session.getTransaction().commit();
-            return insertId;
+            return user;
+        } catch (HibernateException ex) {
+            return null;
+        } finally {
+            session.close();
+        }
+    }
+
+    public List<Utilisateur> getUsers() {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            Query query = session.createQuery("FROM Utilisateur");
+            return query.list();
         } catch (HibernateException ex) {
             return null;
         } finally {

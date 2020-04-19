@@ -117,8 +117,7 @@ public class Utilisateur implements Serializable {
         this.iduser = iduser;
     }
 
-    public Utilisateur(Long iduser, String nomuser, Character sexeuser, String mailuser, String adrvoie, String adrcp, String adrville, String adrpays, String password, String username) {
-        this.iduser = iduser;
+    public Utilisateur(String nomuser, Character sexeuser, String mailuser, String adrvoie, String adrcp, String adrville, String adrpays, String password, String username) {
         this.nomuser = nomuser;
         this.sexeuser = sexeuser;
         this.mailuser = mailuser;
@@ -312,7 +311,9 @@ public class Utilisateur implements Serializable {
 
     @Override
     public String toString() {
-        return "fr.utbm.monespaceutbm.back_end.entity.Utilisateur[ iduser=" + iduser + " ]";
+        return "Utilisateur{" + "iduser=" + iduser + ", nomuser=" + nomuser + ", prenomuser=" + prenomuser + ", sexeuser=" + sexeuser + ", teluser=" + teluser + ", mailuser=" + mailuser + ", datenaisuser=" + datenaisuser + ", photouser=" + photouser + ", adrvoie=" + adrvoie + ", adrcp=" + adrcp + ", adrville=" + adrville + ", adrpays=" + adrpays + ", adrcomp=" + adrcomp + ", password=" + password + ", username=" + username + '}';
     }
+
+   
     
 }
