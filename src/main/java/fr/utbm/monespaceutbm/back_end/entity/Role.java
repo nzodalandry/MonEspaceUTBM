@@ -20,16 +20,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author nzoda
+ * @author danyk
  */
 @Entity
 @Table(name = "role")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Role.findAll", query = "SELECT r FROM Role r")})
 public class Role implements Serializable {
@@ -76,7 +73,6 @@ public class Role implements Serializable {
         this.librole = librole;
     }
 
-    @XmlTransient
     public Collection<Privileges> getPrivilegesCollection() {
         return privilegesCollection;
     }

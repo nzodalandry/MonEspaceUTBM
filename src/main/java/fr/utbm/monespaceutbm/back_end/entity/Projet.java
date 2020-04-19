@@ -19,15 +19,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author nzoda
+ * @author danyk
  */
 @Entity
 @Table(name = "projet")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Projet.findAll", query = "SELECT p FROM Projet p")})
 public class Projet implements Serializable {

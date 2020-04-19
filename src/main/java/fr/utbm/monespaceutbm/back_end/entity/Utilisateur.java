@@ -23,16 +23,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author nzoda
+ * @author danyk
  */
 @Entity
 @Table(name = "utilisateur")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Utilisateur.findAll", query = "SELECT u FROM Utilisateur u")})
 public class Utilisateur implements Serializable {
@@ -129,7 +126,7 @@ public class Utilisateur implements Serializable {
         this.adrcp = adrcp;
         this.adrville = adrville;
         this.adrpays = adrpays;
-        setPassword(password);
+        this.password = password;
         this.username = username;
     }
 
@@ -241,8 +238,8 @@ public class Utilisateur implements Serializable {
         return password;
     }
 
-    private void setPassword(String password) {
-        this.password = password.hashCode() + "";
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getUsername() {
@@ -253,7 +250,6 @@ public class Utilisateur implements Serializable {
         this.username = username;
     }
 
-    @XmlTransient
     public Collection<Privileges> getPrivilegesCollection() {
         return privilegesCollection;
     }
@@ -262,7 +258,6 @@ public class Utilisateur implements Serializable {
         this.privilegesCollection = privilegesCollection;
     }
 
-    @XmlTransient
     public Collection<Cv> getCvCollection() {
         return cvCollection;
     }
@@ -271,7 +266,6 @@ public class Utilisateur implements Serializable {
         this.cvCollection = cvCollection;
     }
 
-    @XmlTransient
     public Collection<Projet> getProjetCollection() {
         return projetCollection;
     }
@@ -280,7 +274,6 @@ public class Utilisateur implements Serializable {
         this.projetCollection = projetCollection;
     }
 
-    @XmlTransient
     public Collection<Inscription> getInscriptionCollection() {
         return inscriptionCollection;
     }
@@ -289,7 +282,6 @@ public class Utilisateur implements Serializable {
         this.inscriptionCollection = inscriptionCollection;
     }
 
-    @XmlTransient
     public Collection<Evenement> getEvenementCollection() {
         return evenementCollection;
     }

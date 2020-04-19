@@ -22,15 +22,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author nzoda
+ * @author danyk
  */
 @Entity
 @Table(name = "experience")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Experience.findAll", query = "SELECT e FROM Experience e")})
 public class Experience implements Serializable {

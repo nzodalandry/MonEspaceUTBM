@@ -22,16 +22,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author nzoda
+ * @author danyk
  */
 @Entity
 @Table(name = "filiere")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Filiere.findAll", query = "SELECT f FROM Filiere f")})
 public class Filiere implements Serializable {
@@ -103,7 +100,6 @@ public class Filiere implements Serializable {
         this.iddep = iddep;
     }
 
-    @XmlTransient
     public Collection<Inscription> getInscriptionCollection() {
         return inscriptionCollection;
     }

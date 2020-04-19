@@ -20,16 +20,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author nzoda
+ * @author danyk
  */
 @Entity
 @Table(name = "type_de_projet")
-@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "TypeDeProjet.findAll", query = "SELECT t FROM TypeDeProjet t")})
 public class TypeDeProjet implements Serializable {
@@ -76,7 +73,6 @@ public class TypeDeProjet implements Serializable {
         this.libtypeproj = libtypeproj;
     }
 
-    @XmlTransient
     public Collection<Projet> getProjetCollection() {
         return projetCollection;
     }
