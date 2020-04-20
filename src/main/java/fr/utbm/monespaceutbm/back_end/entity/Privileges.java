@@ -19,13 +19,15 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author danyk
+ * @author nzoda
  */
 @Entity
 @Table(name = "privileges")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Privileges.findAll", query = "SELECT p FROM Privileges p")})
 public class Privileges implements Serializable {

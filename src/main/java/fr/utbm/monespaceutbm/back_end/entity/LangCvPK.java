@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author danyk
+ * @author nzoda
  */
 @Embeddable
 public class LangCvPK implements Serializable {

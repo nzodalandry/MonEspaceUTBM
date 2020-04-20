@@ -9,8 +9,8 @@ import fr.utbm.monespaceutbm.back_end.entity.Utilisateur;
 import fr.utbm.monespaceutbm.back_end.tools.HibernateUtil;
 import java.util.List;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 /**
  *
@@ -18,7 +18,7 @@ import org.hibernate.Session;
  */
 public class UserDAO {
 
-    private static Session session;
+    private Session session;
 
     public Utilisateur addOrUpdateUser(Utilisateur user) {
         try {
@@ -40,7 +40,8 @@ public class UserDAO {
     public List<Utilisateur> getUsers() {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
-            Query query = session.createQuery("FROM Utilisateur");
+            Query query;
+            query = session.createQuery("FROM Utilisateur");
             return query.list();
         } catch (HibernateException ex) {
             return null;

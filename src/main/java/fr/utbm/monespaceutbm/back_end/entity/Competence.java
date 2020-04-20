@@ -19,13 +19,15 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author danyk
+ * @author nzoda
  */
 @Entity
 @Table(name = "competence")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Competence.findAll", query = "SELECT c FROM Competence c")})
 public class Competence implements Serializable {

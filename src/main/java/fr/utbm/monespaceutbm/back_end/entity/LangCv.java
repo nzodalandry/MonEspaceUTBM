@@ -15,13 +15,15 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author danyk
+ * @author nzoda
  */
 @Entity
 @Table(name = "lang_cv")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "LangCv.findAll", query = "SELECT l FROM LangCv l")})
 public class LangCv implements Serializable {

@@ -20,13 +20,16 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author danyk
+ * @author nzoda
  */
 @Entity
 @Table(name = "langue")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Langue.findAll", query = "SELECT l FROM Langue l")})
 public class Langue implements Serializable {
@@ -73,6 +76,7 @@ public class Langue implements Serializable {
         this.liblang = liblang;
     }
 
+    @XmlTransient
     public Collection<LangCv> getLangCvCollection() {
         return langCvCollection;
     }

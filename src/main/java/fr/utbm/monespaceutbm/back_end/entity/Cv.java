@@ -25,13 +25,16 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author danyk
+ * @author nzoda
  */
 @Entity
 @Table(name = "cv")
+@XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Cv.findAll", query = "SELECT c FROM Cv c")})
 public class Cv implements Serializable {
@@ -128,6 +131,7 @@ public class Cv implements Serializable {
         this.misajourcv = misajourcv;
     }
 
+    @XmlTransient
     public Collection<CentreInteret> getCentreInteretCollection() {
         return centreInteretCollection;
     }
@@ -136,6 +140,7 @@ public class Cv implements Serializable {
         this.centreInteretCollection = centreInteretCollection;
     }
 
+    @XmlTransient
     public Collection<LangCv> getLangCvCollection() {
         return langCvCollection;
     }
@@ -144,6 +149,7 @@ public class Cv implements Serializable {
         this.langCvCollection = langCvCollection;
     }
 
+    @XmlTransient
     public Collection<Formation> getFormationCollection() {
         return formationCollection;
     }
@@ -152,6 +158,7 @@ public class Cv implements Serializable {
         this.formationCollection = formationCollection;
     }
 
+    @XmlTransient
     public Collection<Experience> getExperienceCollection() {
         return experienceCollection;
     }
@@ -160,6 +167,7 @@ public class Cv implements Serializable {
         this.experienceCollection = experienceCollection;
     }
 
+    @XmlTransient
     public Collection<Competence> getCompetenceCollection() {
         return competenceCollection;
     }
