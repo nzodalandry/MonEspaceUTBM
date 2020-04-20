@@ -21,11 +21,11 @@ public class NewMain {
     public static void main(String[] args) {
         // TODO code application logic here
         UserService US = new UserService();
-        List<Utilisateur> listUser = US.getUsers();
-        Utilisateur u = listUser.get(1);
-        u.setNomuser("WANDJI");
-        u.setSexeuser('F');
-//        Utilisateur u = new Utilisateur("NZODA", 'M', "nzodalandry@gmail.com", "2 rue ernest duvillard", "90 000", "Belfort", "France", "admin", "lnzodaou");
+        List<Utilisateur> listUser;
+//        Utilisateur u = listUser.get(1);
+//        u.setNomuser("WANDJI");
+//        u.setSexeuser('F');
+        Utilisateur u = new Utilisateur("WANDJI", 'F', "nzodalandry@gmail.com", "2 rue ernest duvillard", "90 000", "Belfort", "France", "admin", "lnzodaou");
         Utilisateur lastInsert = US.addOrUpdateUser(u);
         System.out.println("Utilisateur " + lastInsert.getIduser() + " Modifié");
         listUser = US.getUsers();
