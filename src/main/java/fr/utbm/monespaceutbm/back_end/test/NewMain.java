@@ -26,8 +26,8 @@ public class NewMain {
 //        u.setNomuser("WANDJI");
 //        u.setSexeuser('F');
         Utilisateur u = new Utilisateur("WANDJI", 'F', "nzodalandry@gmail.com", "2 rue ernest duvillard", "90 000", "Belfort", "France", "admin", "lnzodaou");
-        Utilisateur lastInsert = US.addOrUpdateUser(u);
-        System.out.println("Utilisateur " + lastInsert.getIduser() + " Modifié");
+//        Utilisateur lastInsert = US.addOrUpdateUser(u);
+//        System.out.println("Utilisateur " + lastInsert.getIduser() + " Modifié");
         listUser = US.getUsers();
         listUser.forEach((user) -> {
             System.out.println(user.toString());
