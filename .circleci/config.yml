@@ -1,5 +1,16 @@
 version: 2.1
-
+commit:
+    jobs:
+      - test
+      - deploy
+  nightly:
+    triggers:
+      - schedule:
+          cron: "0 0 * * *"
+          filters:
+            branches:
+              only:
+                - prod
 orbs:
   maven: circleci/maven@0.0.12
 
