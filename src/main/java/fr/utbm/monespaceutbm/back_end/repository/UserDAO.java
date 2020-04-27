@@ -24,10 +24,11 @@ public class UserDAO {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            if(user.getIduser() != null)
+            if (user.getIduser() != null) {
                 session.update(user);
-            else
+            } else {
                 user.setIduser((Long) session.save(user));
+            }
             session.getTransaction().commit();
             return user;
         } catch (HibernateException ex) {
@@ -41,7 +42,7 @@ public class UserDAO {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             Query query;
-            query = session.createQuery("FROM Utilisateur");
+            query = session.createNamedQuery("FROM Utilisateur");
             return query.list();
         } catch (HibernateException ex) {
             return null;
