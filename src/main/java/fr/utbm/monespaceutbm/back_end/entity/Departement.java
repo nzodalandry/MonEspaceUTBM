@@ -134,7 +134,8 @@ public class Departement implements Serializable {
 
     @Override
     public String toString() {
-        return "fr.utbm.monespaceutbm.back_end.entity.Departement[ iddep=" + iddep + " ]";
+        return "Departement{" + "iddep=" + iddep + ", numdep=" + numdep + ", libdep=" + libdep + ", datedep=" + datedep + '}';
     }
+
     
 }

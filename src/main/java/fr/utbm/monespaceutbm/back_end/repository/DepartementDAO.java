@@ -5,7 +5,7 @@
  */
 package fr.utbm.monespaceutbm.back_end.repository;
 
-import fr.utbm.monespaceutbm.back_end.entity.Formation;
+import fr.utbm.monespaceutbm.back_end.entity.Departement;
 import fr.utbm.monespaceutbm.back_end.tools.HibernateUtil;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -16,20 +16,20 @@ import org.hibernate.query.Query;
  *
  * @author danyk
  */
-public class FormationDAO {
+public class DepartementDAO {
     
      private Session session;
 
-    public Formation addOrUpdateFormation(Formation formation) {
+    public Departement addOrUpdateDepartement(Departement departement) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            if(formation.getIdfor()!= null)
-                session.update(formation);
+            if(departement.getIddep()!= null)
+                session.update(departement);
             else
-                formation.setIdfor((Long) session.save(formation));
+               departement.setIddep((Long) session.save(departement));
             session.getTransaction().commit();
-            return formation;
+            return departement;
         } catch (HibernateException ex) {
             return null;
         } finally {
@@ -37,18 +37,17 @@ public class FormationDAO {
         }
     }
 
-    public List<Formation> getFormations() {
+    public List<Departement> getDepartements() {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             Query query;
-            query = session.createNamedQuery("FROM Formation");
-            return query.list();
+            query = session.createQuery("FROM Departement");
+            return query.getResultList();
         } catch (HibernateException ex) {
             return null;
         } finally {
             session.close();
         }
     }
-}
     
-
+}
