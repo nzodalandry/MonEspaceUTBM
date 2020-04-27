@@ -17,6 +17,7 @@ fr\utbm\monespaceutbm\back_end\entity\LangCvPK.class
 fr\utbm\monespaceutbm\back_end\entity\Langue.class
 fr\utbm\monespaceutbm\back_end\entity\Privileges.class
 fr\utbm\monespaceutbm\back_end\entity\Evenement.class
+fr\utbm\monespaceutbm\back_end\repository\FormationDAO.class
 fr\utbm\monespaceutbm\back_end\repository\UserDAO.class
 fr\utbm\monespaceutbm\back_end\entity\CentreInteret.class
 fr\utbm\monespaceutbm\back_end\entity\Role.class
