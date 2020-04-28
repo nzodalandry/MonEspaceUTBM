@@ -5,34 +5,48 @@
  */
 package fr.utbm.monespaceutbm.back_end.entity;
 
+import java.util.Hashtable;
+
 /**
  *
  * @author nzoda
  */
-public class MessageError {
+public abstract class MessageError {
 
-    private Integer code;
-    private String status;
-    private String message;
-    public MessageError(Integer code, String status, String messsage) {
-        this.code = code;
-        this.status = status;
+    private static String message = "";
+
+    @SuppressWarnings("UseOfObsoleteCollectionType")
+    private static Hashtable listActions() {
+        Hashtable h = new Hashtable();
+        h.put('C', "Enregistrement");
+        h.put('R', "Lecture");
+        h.put('U', "Modification");
+        h.put('D', "Suppréssion");
+        return h;
     }
 
-    public static MessageError getSuccess(String message) {
-        return new MessageError(1, "Success", message);
+    public static void setSuccess(char action) {
+        message = listActions().get(action) + " éffectué(e) avec succès !";
     }
 
-    public static MessageError getErrorBD(String message) {
-        return new MessageError(2, "Error", message);
+    public static void setErrorBD() {
+        message = "Une erreur est survenue dans la base de données pendant l'opération !";
     }
 
-    public static MessageError getErrorExists(String message) {
-        return new MessageError(3, "Already exists", message);
+    public static void setAlreadyExist(String M) {
+        message = M + " existe déjà dans la base de données !";
     }
 
-    public static MessageError getErrorAccess(String message) {
-        return new MessageError(4, "Not privileges", message);
+    public static void setErrorAccess() {
+        message = "Vous n'avez pas les droits necessaires pour éffectuer cette action !";
+    }
+
+    public static void setDataNotFound() {
+        message = "Aucune données trouvées pour l'instant !";
+    }
+
+    public static String getMessage() {
+        return message;
     }
 
 }

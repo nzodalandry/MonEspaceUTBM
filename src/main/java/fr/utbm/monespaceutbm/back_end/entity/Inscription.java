@@ -7,6 +7,7 @@ package fr.utbm.monespaceutbm.back_end.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -80,11 +81,11 @@ public class Inscription implements Serializable {
         this.inscriptionPK = inscriptionPK;
     }
 
-    public Date getDateins() {
+    public Date getDateIns() {
         return dateins;
     }
 
-    public void setDateins(Date dateins) {
+    public void setDateIns(Date dateins) {
         this.dateins = dateins;
     }
 
@@ -128,18 +129,24 @@ public class Inscription implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Inscription)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Inscription other = (Inscription) object;
-        if ((this.inscriptionPK == null && other.inscriptionPK != null) || (this.inscriptionPK != null && !this.inscriptionPK.equals(other.inscriptionPK))) {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Inscription other = (Inscription) obj;
+        if (!Objects.equals(this.inscriptionPK, other.inscriptionPK) || this.niv != other.niv || !Objects.equals(this.filiere, other.filiere)) {
             return false;
         }
         return true;
     }
 
+    
     @Override
     public String toString() {
         return "fr.utbm.monespaceutbm.back_end.entity.Inscription[ inscriptionPK=" + inscriptionPK + " ]";

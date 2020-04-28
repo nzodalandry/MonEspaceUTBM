@@ -17,9 +17,9 @@ import org.hibernate.query.Query;
  * @author nzoda
  */
 public class UserDAO {
-
+    
     private Session session;
-
+    
     public Utilisateur addOrUpdateUser(Utilisateur user) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -37,13 +37,27 @@ public class UserDAO {
             session.close();
         }
     }
-
+    
     public List<Utilisateur> getUsers() {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             Query query;
-            query = session.createNamedQuery("FROM Utilisateur");
+            query = session.createQuery("FROM Utilisateur");
             return query.list();
+        } catch (HibernateException ex) {
+            return null;
+        } finally {
+            session.close();
+        }
+    }
+    
+    public Utilisateur deleteUser(Utilisateur user) {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.delete(user);
+            session.getTransaction().commit();
+            return user;
         } catch (HibernateException ex) {
             return null;
         } finally {

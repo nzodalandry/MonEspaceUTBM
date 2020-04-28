@@ -177,5 +177,5 @@ public class Formation implements Serializable {
     public String toString() {
         return "fr.utbm.monespaceutbm.back_end.entity.Formation[ idfor=" + idfor + " ]";
     }
-    
+
 }

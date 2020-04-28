@@ -8,6 +8,7 @@ package fr.utbm.monespaceutbm.back_end.entity;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -297,15 +298,32 @@ public class Utilisateur implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Utilisateur)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Utilisateur other = (Utilisateur) object;
-        if ((this.iduser == null && other.iduser != null) || (this.iduser != null && !this.iduser.equals(other.iduser))) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
+        final Utilisateur other = (Utilisateur) obj;
+        if (!Objects.equals(this.prenomuser, other.prenomuser)) {
+            return false;
+        }
+        if (!Objects.equals(this.mailuser, other.mailuser)) {
+            return false;
+        }
+        if (!Objects.equals(this.username, other.username)) {
+            return false;
+        }
+        if (!Objects.equals(this.nomuser, other.nomuser)) {
+            return false;
+        } else if (!Objects.equals(this.prenomuser, other.prenomuser)) {
+            return false;
+        }
+
         return true;
     }
 
@@ -314,6 +332,4 @@ public class Utilisateur implements Serializable {
         return "Utilisateur{" + "iduser=" + iduser + ", nomuser=" + nomuser + ", prenomuser=" + prenomuser + ", sexeuser=" + sexeuser + ", teluser=" + teluser + ", mailuser=" + mailuser + ", datenaisuser=" + datenaisuser + ", photouser=" + photouser + ", adrvoie=" + adrvoie + ", adrcp=" + adrcp + ", adrville=" + adrville + ", adrpays=" + adrpays + ", adrcomp=" + adrcomp + ", password=" + password + ", username=" + username + '}';
     }
 
-   
-    
 }

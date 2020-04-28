@@ -60,20 +60,21 @@ public class InscriptionPK implements Serializable {
     }
 
     @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof InscriptionPK)) {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        InscriptionPK other = (InscriptionPK) object;
-        if (this.idfil != other.idfil) {
+        if (getClass() != obj.getClass()) {
             return false;
         }
-        if (this.iduser != other.iduser) {
-            return false;
-        }
-        return true;
+        final InscriptionPK other = (InscriptionPK) obj;
+        return !(this.idfil != other.idfil || this.iduser != other.iduser);
     }
+
+
 
     @Override
     public String toString() {

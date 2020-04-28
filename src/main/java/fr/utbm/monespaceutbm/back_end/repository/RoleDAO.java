@@ -5,10 +5,50 @@
  */
 package fr.utbm.monespaceutbm.back_end.repository;
 
+import fr.utbm.monespaceutbm.back_end.entity.Role;
+import fr.utbm.monespaceutbm.back_end.entity.Utilisateur;
+import fr.utbm.monespaceutbm.back_end.tools.HibernateUtil;
+import java.util.List;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
+
 /**
  *
  * @author nzoda
  */
 public class RoleDAO {
-    
+
+    private Session session;
+
+    public Role addOrUpdateRole(Role role) {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            if (role.getIdrole() != null) {
+                session.update(role);
+            } else {
+                role.setIdrole((Long) session.save(role));
+            }
+            session.getTransaction().commit();
+            return role;
+        } catch (HibernateException ex) {
+            return null;
+        } finally {
+            session.close();
+        }
+    }
+
+    public List<Utilisateur> getRoles() {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            Query query;
+            query = session.createNamedQuery("FROM Utilisateur");
+            return query.list();
+        } catch (HibernateException ex) {
+            return null;
+        } finally {
+            session.close();
+        }
+    }
 }
