@@ -5,7 +5,7 @@
  */
 package fr.utbm.monespaceutbm.back_end.repository;
 
-import fr.utbm.monespaceutbm.back_end.entity.Formation;
+import fr.utbm.monespaceutbm.back_end.entity.Filiere;
 import fr.utbm.monespaceutbm.back_end.tools.HibernateUtil;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -16,20 +16,21 @@ import org.hibernate.query.Query;
  *
  * @author danyk
  */
-public class FormationDAO {
+public class FiliereDAO {
     
      private Session session;
 
-    public Formation addOrUpdateFormation(Formation formation) {
+    public Filiere addOrUpdateFiliere(Filiere filiere) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            if(formation.getIdfor()!= null)
-                session.update(formation);
-            else
-                formation.setIdfor((Long) session.save(formation));
+            if (filiere.getIdfil()!= null) {
+                session.update(filiere);
+            } else {
+                filiere.setIdfil((Long) session.save(filiere));
+            }
             session.getTransaction().commit();
-            return formation;
+            return filiere;
         } catch (HibernateException ex) {
             return null;
         } finally {
@@ -37,11 +38,11 @@ public class FormationDAO {
         }
     }
 
-    public List<Formation> getFormations() {
+    public List<Filiere> getFilieres() {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             Query query;
-            query = session.createNamedQuery("FROM Formation");
+            query = session.createQuery("FROM Filiere");
             return query.list();
         } catch (HibernateException ex) {
             return null;
@@ -49,6 +50,5 @@ public class FormationDAO {
             session.close();
         }
     }
-}
     
-
+}

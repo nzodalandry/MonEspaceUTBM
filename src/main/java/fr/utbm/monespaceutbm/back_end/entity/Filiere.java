@@ -65,10 +65,11 @@ public class Filiere implements Serializable {
         this.idfil = idfil;
     }
 
-    public Filiere(Long idfil, String codefil, String libfil) {
+    public Filiere(Long idfil, String codefil, String libfil, Departement iddep) {
         this.idfil = idfil;
         this.codefil = codefil;
         this.libfil = libfil;
+        this.iddep = iddep;
     }
 
     public Long getIdfil() {
@@ -134,7 +135,8 @@ public class Filiere implements Serializable {
 
     @Override
     public String toString() {
-        return "fr.utbm.monespaceutbm.back_end.entity.Filiere[ idfil=" + idfil + " ]";
+        return "Filiere{" + "idfil=" + idfil + ", codefil=" + codefil + ", libfil=" + libfil + ", iddep=" + iddep.toString() +'}';
     }
-    
+
+   
 }
