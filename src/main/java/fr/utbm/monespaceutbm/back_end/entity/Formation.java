@@ -154,26 +154,6 @@ public class Formation implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idfor != null ? idfor.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Formation)) {
-            return false;
-        }
-        Formation other = (Formation) object;
-        if ((this.idfor == null && other.idfor != null) || (this.idfor != null && !this.idfor.equals(other.idfor))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
         return "fr.utbm.monespaceutbm.back_end.entity.Formation[ idfor=" + idfor + " ]";
     }

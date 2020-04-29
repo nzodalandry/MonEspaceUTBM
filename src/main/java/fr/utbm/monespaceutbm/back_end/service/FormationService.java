@@ -13,13 +13,13 @@ import java.util.List;
  *
  * @author danyk
  */
-public class FormationService {
+public abstract class FormationService {
 
-    public Formation addOrUpdateFormation(Formation formation) {
+    public static Formation addOrUpdateFormation(Formation formation) {
         return new FormationDAO().addOrUpdateFormation(formation);
     }
 
-    public List<Formation> getFormations() {
+    public static List<Formation> getFormations() {
         return new FormationDAO().getFormations();
     }
 

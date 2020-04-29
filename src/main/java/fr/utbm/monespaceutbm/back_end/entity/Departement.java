@@ -113,26 +113,6 @@ public class Departement implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (iddep != null ? iddep.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Departement)) {
-            return false;
-        }
-        Departement other = (Departement) object;
-        if ((this.iddep == null && other.iddep != null) || (this.iddep != null && !this.iddep.equals(other.iddep))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
         return "Departement{" + "iddep=" + iddep + ", numdep=" + numdep + ", libdep=" + libdep + ", datedep=" + datedep + '}';
     }

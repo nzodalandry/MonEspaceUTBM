@@ -112,26 +112,6 @@ public class Evenement implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idevt != null ? idevt.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Evenement)) {
-            return false;
-        }
-        Evenement other = (Evenement) object;
-        if ((this.idevt == null && other.idevt != null) || (this.idevt != null && !this.idevt.equals(other.idevt))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
         return "fr.utbm.monespaceutbm.back_end.entity.Evenement[ idevt=" + idevt + " ]";
     }

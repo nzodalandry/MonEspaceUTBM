@@ -323,7 +323,6 @@ public class Utilisateur implements Serializable {
         } else if (!Objects.equals(this.prenomuser, other.prenomuser)) {
             return false;
         }
-
         return true;
     }
 

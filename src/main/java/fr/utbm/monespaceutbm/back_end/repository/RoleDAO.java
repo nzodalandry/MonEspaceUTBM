@@ -43,7 +43,7 @@ public class RoleDAO {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             Query query;
-            query = session.createNamedQuery("FROM Utilisateur");
+            query = session.createQuery("FROM Utilisateur");
             return query.list();
         } catch (HibernateException ex) {
             return null;

@@ -52,30 +52,6 @@ public class PrivilegesPK implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (int) iduser;
-        hash += (int) idrole;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PrivilegesPK)) {
-            return false;
-        }
-        PrivilegesPK other = (PrivilegesPK) object;
-        if (this.iduser != other.iduser) {
-            return false;
-        }
-        if (this.idrole != other.idrole) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
         return "fr.utbm.monespaceutbm.back_end.entity.PrivilegesPK[ iduser=" + iduser + ", idrole=" + idrole + " ]";
     }

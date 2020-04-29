@@ -86,26 +86,6 @@ public class Langue implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idlang != null ? idlang.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Langue)) {
-            return false;
-        }
-        Langue other = (Langue) object;
-        if ((this.idlang == null && other.idlang != null) || (this.idlang != null && !this.idlang.equals(other.idlang))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
         return "fr.utbm.monespaceutbm.back_end.entity.Langue[ idlang=" + idlang + " ]";
     }

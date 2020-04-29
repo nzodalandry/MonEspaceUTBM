@@ -84,26 +84,6 @@ public class CentreInteret implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idcent != null ? idcent.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof CentreInteret)) {
-            return false;
-        }
-        CentreInteret other = (CentreInteret) object;
-        if ((this.idcent == null && other.idcent != null) || (this.idcent != null && !this.idcent.equals(other.idcent))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
         return "fr.utbm.monespaceutbm.back_end.entity.CentreInteret[ idcent=" + idcent + " ]";
     }

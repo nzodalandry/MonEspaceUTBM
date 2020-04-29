@@ -16,8 +16,10 @@ import java.util.List;
  */
 public abstract class UserService{
     static UserDAO UD = new UserDAO();
+    static Utilisateur u;
+    static List<Utilisateur> list;
     public static Utilisateur addOrUpdateUser(Utilisateur user) {
-        Utilisateur u = UD.addOrUpdateUser(user);
+        u = UD.addOrUpdateUser(user);
         if(u != null){
             if(user.getIduser() != null)
                 MessageError.setSuccess('U');
@@ -29,24 +31,27 @@ public abstract class UserService{
         return u;
     }
     public static List<Utilisateur> getUsers() {
-        List<Utilisateur> list = UD.getUsers();
+        list = UD.getUsers();
         if(list != null){
-            if(!list.isEmpty())
-                MessageError.setSuccess('R');
-            else
+            if(list.isEmpty())
                 MessageError.setDataNotFound();
+            else
+                MessageError.setSuccess('R');
         }
         else
             MessageError.setErrorBD();
         return list;
     }
     public static Utilisateur deleteUser(Utilisateur user){
-         Utilisateur u = UD.deleteUser(user);
+        u = UD.deleteUser(user);
         if(u != null)
             MessageError.setSuccess('D');
         else
             MessageError.setErrorBD();
         return u;
     }
-    
+    public static Utilisateur find(Utilisateur user){
+        u = UD.find(user);
+        return u;
+    }
 }

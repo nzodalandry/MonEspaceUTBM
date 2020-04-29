@@ -117,26 +117,6 @@ public class Projet implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idproj != null ? idproj.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Projet)) {
-            return false;
-        }
-        Projet other = (Projet) object;
-        if ((this.idproj == null && other.idproj != null) || (this.idproj != null && !this.idproj.equals(other.idproj))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
         return "fr.utbm.monespaceutbm.back_end.entity.Projet[ idproj=" + idproj + " ]";
     }

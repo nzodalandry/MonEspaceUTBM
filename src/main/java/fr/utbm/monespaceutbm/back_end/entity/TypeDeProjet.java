@@ -86,26 +86,6 @@ public class TypeDeProjet implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idtypeproj != null ? idtypeproj.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TypeDeProjet)) {
-            return false;
-        }
-        TypeDeProjet other = (TypeDeProjet) object;
-        if ((this.idtypeproj == null && other.idtypeproj != null) || (this.idtypeproj != null && !this.idtypeproj.equals(other.idtypeproj))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
         return "fr.utbm.monespaceutbm.back_end.entity.TypeDeProjet[ idtypeproj=" + idtypeproj + " ]";
     }

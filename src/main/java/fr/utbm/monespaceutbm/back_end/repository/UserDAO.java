@@ -64,4 +64,8 @@ public class UserDAO {
             session.close();
         }
     }
+    
+    public Utilisateur find(Utilisateur u){
+        return null;
+    }
 }

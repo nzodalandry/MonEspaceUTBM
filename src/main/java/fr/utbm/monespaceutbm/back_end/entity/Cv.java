@@ -185,26 +185,6 @@ public class Cv implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idcv != null ? idcv.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cv)) {
-            return false;
-        }
-        Cv other = (Cv) object;
-        if ((this.idcv == null && other.idcv != null) || (this.idcv != null && !this.idcv.equals(other.idcv))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
         return "fr.utbm.monespaceutbm.back_end.entity.Cv[ idcv=" + idcv + " ]";
     }

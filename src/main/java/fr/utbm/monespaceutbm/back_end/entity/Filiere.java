@@ -114,26 +114,6 @@ public class Filiere implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idfil != null ? idfil.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Filiere)) {
-            return false;
-        }
-        Filiere other = (Filiere) object;
-        if ((this.idfil == null && other.idfil != null) || (this.idfil != null && !this.idfil.equals(other.idfil))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
         return "Filiere{" + "idfil=" + idfil + ", codefil=" + codefil + ", libfil=" + libfil + ", iddep=" + iddep.toString() +'}';
     }

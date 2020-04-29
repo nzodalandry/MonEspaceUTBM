@@ -41,7 +41,7 @@ public class FormationDAO {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             Query query;
-            query = session.createNamedQuery("FROM Formation");
+            query = session.createQuery("FROM Formation");
             return query.list();
         } catch (HibernateException ex) {
             return null;

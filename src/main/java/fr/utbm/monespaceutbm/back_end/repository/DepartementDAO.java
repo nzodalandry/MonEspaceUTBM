@@ -49,5 +49,19 @@ public class DepartementDAO {
             session.close();
         }
     }
+
+    public Departement deleteDepartement(Departement departement) {
+           try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.delete(departement);
+            session.getTransaction().commit();
+            return departement;
+        } catch (HibernateException ex) {
+            return null;
+        } finally {
+            session.close();
+        }
+    }
     
 }

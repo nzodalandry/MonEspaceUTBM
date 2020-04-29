@@ -96,26 +96,6 @@ public class Privileges implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (privilegesPK != null ? privilegesPK.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Privileges)) {
-            return false;
-        }
-        Privileges other = (Privileges) object;
-        if ((this.privilegesPK == null && other.privilegesPK != null) || (this.privilegesPK != null && !this.privilegesPK.equals(other.privilegesPK))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
         return "fr.utbm.monespaceutbm.back_end.entity.Privileges[ privilegesPK=" + privilegesPK + " ]";
     }

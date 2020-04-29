@@ -126,26 +126,6 @@ public class Experience implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idexp != null ? idexp.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Experience)) {
-            return false;
-        }
-        Experience other = (Experience) object;
-        if ((this.idexp == null && other.idexp != null) || (this.idexp != null && !this.idexp.equals(other.idexp))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
         return "fr.utbm.monespaceutbm.back_end.entity.Experience[ idexp=" + idexp + " ]";
     }

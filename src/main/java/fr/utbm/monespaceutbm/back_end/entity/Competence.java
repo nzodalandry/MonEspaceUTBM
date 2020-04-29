@@ -109,26 +109,6 @@ public class Competence implements Serializable {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idcomp != null ? idcomp.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Competence)) {
-            return false;
-        }
-        Competence other = (Competence) object;
-        if ((this.idcomp == null && other.idcomp != null) || (this.idcomp != null && !this.idcomp.equals(other.idcomp))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
     public String toString() {
         return "fr.utbm.monespaceutbm.back_end.entity.Competence[ idcomp=" + idcomp + " ]";
     }
