@@ -19,7 +19,6 @@ public class NewMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
         List<Utilisateur> listUser = UserService.getUsers();
         listUser.forEach((departement) -> {
             System.out.println(departement.toString());
