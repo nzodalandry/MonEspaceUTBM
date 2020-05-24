@@ -6,7 +6,7 @@ TO DO
 
 Landry
 
-# PrivilegeService
+~~PrivilegeService
 # CvDAO
 # CvService
 # ProjetDAO
@@ -14,7 +14,7 @@ Landry
 # TypeDeProjetDAO
 # TypeDeProjetService
 # InscriptionDAO
-# InscriptionService
+# InscriptionService ~~
 EvenementDAO
 EvenementService
 
