@@ -14,7 +14,7 @@ Landry
 ~~TypeDeProjetDAO~~
 ~~TypeDeProjetService~~
 ~~InscriptionDAO~~
-~~InscriptionService ~~
+~~InscriptionService~~
 EvenementDAO
 EvenementService
 
