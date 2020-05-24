@@ -6,26 +6,25 @@ TO DO
 
 Landry
 
-~~PrivilegeService~~
-~~CvDAO~~
-~~CvService~~
-~~ProjetDAO~~
-~~ProjetService~~
-~~TypeDeProjetDAO~~
-~~TypeDeProjetService~~
-~~InscriptionDAO~~
-~~InscriptionService~~
-~~EvenementDAO~~
-~~EvenementService~~
+PrivilegeService
+CvDAO
+CvService
+ProjetDAO
+ProjetService
+TypeDeProjetDAO
+TypeDeProjetService
+InscriptionDAO
+InscriptionService
+EvenementDAO
 
 Daniele
 
-RoleService
-CentreInteretDAO
-CentreInteretService
-CompetenceDAO
-CompetenceService
-LangueDAO
-LangueService
-ExperienceDAO
-ExperienceService
+~~RoleService ~~
+~~CentreInteretDAO~~
+~~CentreInteretService~~
+~~CompetenceDAO~~
+~~CompetenceService~~
+~~LangueDAO~~
+~~éLangueService~~
+~~ExperienceDAO~~
+~~ExperienceService~~
