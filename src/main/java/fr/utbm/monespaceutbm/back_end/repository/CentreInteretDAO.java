@@ -5,7 +5,7 @@
  */
 package fr.utbm.monespaceutbm.back_end.repository;
 
-import fr.utbm.monespaceutbm.back_end.entity.Role;
+import fr.utbm.monespaceutbm.back_end.entity.CentreInteret;
 import fr.utbm.monespaceutbm.back_end.tools.HibernateUtil;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -16,21 +16,21 @@ import org.hibernate.query.Query;
  *
  * @author nzoda
  */
-public class RoleDAO {
+public class CentreInteretDAO {
 
     private Session session;
 
-    public Role addOrUpdateRole(Role role) {
+    public CentreInteret addOrUpdateCentreInteret(CentreInteret centreinteret) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            if (role.getIdrole() != null) {
-                session.update(role);
+            if (centreinteret.getIdcent() != null) {
+                session.update(centreinteret);
             } else {
-                role.setIdrole((Long) session.save(role));
+                centreinteret.setIdcent((Long) session.save(centreinteret));
             }
             session.getTransaction().commit();
-            return role;
+            return centreinteret;
         } catch (HibernateException ex) {
             return null;
         } finally {
@@ -38,11 +38,11 @@ public class RoleDAO {
         }
     }
 
-    public List<Role> getRoles() {
+    public List<CentreInteret> getCentreInterets() {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             Query query;
-            query = session.createQuery("FROM Role");
+            query = session.createQuery("FROM CentreInteret");
             return query.list();
         } catch (HibernateException ex) {
             return null;
@@ -51,13 +51,13 @@ public class RoleDAO {
         }
     }
 
-    public Role deleteRole(Role role) {
+    public CentreInteret deleteCentreInteret(CentreInteret centreinteret) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(role);
+            session.delete(centreinteret);
             session.getTransaction().commit();
-            return role;
+            return centreinteret;
         } catch (HibernateException ex) {
             return null;
         } finally {

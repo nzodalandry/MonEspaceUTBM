@@ -5,7 +5,7 @@
  */
 package fr.utbm.monespaceutbm.back_end.repository;
 
-import fr.utbm.monespaceutbm.back_end.entity.Role;
+import fr.utbm.monespaceutbm.back_end.entity.Langue;
 import fr.utbm.monespaceutbm.back_end.tools.HibernateUtil;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -14,23 +14,22 @@ import org.hibernate.query.Query;
 
 /**
  *
- * @author nzoda
+ * @author danyk
  */
-public class RoleDAO {
+public class LangueDAO {
+      private Session session;
 
-    private Session session;
-
-    public Role addOrUpdateRole(Role role) {
+    public Langue addOrUpdateLangue(Langue langue) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            if (role.getIdrole() != null) {
-                session.update(role);
+            if (langue.getIdlang() != null) {
+                session.update(langue);
             } else {
-                role.setIdrole((Long) session.save(role));
+                langue.setIdlang((Long) session.save(langue));
             }
             session.getTransaction().commit();
-            return role;
+            return langue;
         } catch (HibernateException ex) {
             return null;
         } finally {
@@ -38,11 +37,11 @@ public class RoleDAO {
         }
     }
 
-    public List<Role> getRoles() {
+    public List<Langue> getLangues() {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             Query query;
-            query = session.createQuery("FROM Role");
+            query = session.createQuery("FROM Langue");
             return query.list();
         } catch (HibernateException ex) {
             return null;
@@ -51,18 +50,17 @@ public class RoleDAO {
         }
     }
 
-    public Role deleteRole(Role role) {
+    public Langue deleteLangue(Langue langue) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(role);
+            session.delete(langue);
             session.getTransaction().commit();
-            return role;
+            return langue;
         } catch (HibernateException ex) {
             return null;
         } finally {
             session.close();
         }
     }
-    }
-
+}
