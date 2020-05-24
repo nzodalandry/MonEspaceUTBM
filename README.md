@@ -15,8 +15,8 @@ Landry
 ~~TypeDeProjetService~~
 ~~InscriptionDAO~~
 ~~InscriptionService~~
-EvenementDAO
-EvenementService
+~~EvenementDAO~~
+~~EvenementService~~
 
 Daniele
 
