@@ -39,11 +39,11 @@ public class RoleDAO {
         }
     }
 
-    public List<Utilisateur> getRoles() {
+    public List<Role> getRoles() {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             Query query;
-            query = session.createQuery("FROM Utilisateur");
+            query = session.createQuery("FROM Role");
             return query.list();
         } catch (HibernateException ex) {
             return null;

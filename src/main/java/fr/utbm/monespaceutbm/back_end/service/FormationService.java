@@ -6,6 +6,7 @@
 package fr.utbm.monespaceutbm.back_end.service;
 
 import fr.utbm.monespaceutbm.back_end.entity.Formation;
+import fr.utbm.monespaceutbm.back_end.entity.MessageError;
 import fr.utbm.monespaceutbm.back_end.repository.FormationDAO;
 import java.util.List;
 
@@ -15,12 +16,46 @@ import java.util.List;
  */
 public abstract class FormationService {
 
+    static FormationDAO FD = new FormationDAO();
+    static Formation f;
+    static List<Formation> list;
+
     public static Formation addOrUpdateFormation(Formation formation) {
-        return new FormationDAO().addOrUpdateFormation(formation);
+        f = FD.addOrUpdateFormation(formation);
+        if (f != null) {
+            if (formation.getIdfor() != null) {
+                MessageError.setSuccess('U');
+            } else {
+                MessageError.setSuccess('C');
+            }
+        } else {
+            MessageError.setErrorBD();
+        }
+        return f;
     }
 
     public static List<Formation> getFormations() {
-        return new FormationDAO().getFormations();
+        list = FD.getFormations();
+        if (list != null) {
+            if (list.isEmpty()) {
+                MessageError.setDataNotFound();
+            } else {
+                MessageError.setSuccess('R');
+            }
+        } else {
+            MessageError.setErrorBD();
+        }
+        return list;
+    }
+
+    public static Formation deleteFormation(Formation formation) {
+        f = FD.deleteFormation(formation);
+        if (f != null) {
+            MessageError.setSuccess('D');
+        } else {
+            MessageError.setErrorBD();
+        }
+        return f;
     }
 
 }
