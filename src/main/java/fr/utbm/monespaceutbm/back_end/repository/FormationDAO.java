@@ -49,6 +49,19 @@ public class FormationDAO {
             session.close();
         }
     }
+    public Formation deleteFormation(Formation formation) {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.delete(formation);
+            session.getTransaction().commit();
+            return formation;
+        } catch (HibernateException ex) {
+            return null;
+        } finally {
+            session.close();
+        }
+    }
 }
     
 
