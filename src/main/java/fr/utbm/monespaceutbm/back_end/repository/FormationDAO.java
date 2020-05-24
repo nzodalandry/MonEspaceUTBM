@@ -17,17 +17,18 @@ import org.hibernate.query.Query;
  * @author danyk
  */
 public class FormationDAO {
-    
-     private Session session;
+
+    private Session session;
 
     public Formation addOrUpdateFormation(Formation formation) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            if(formation.getIdfor()!= null)
+            if (formation.getIdfor() != null) {
                 session.update(formation);
-            else
+            } else {
                 formation.setIdfor((Long) session.save(formation));
+            }
             session.getTransaction().commit();
             return formation;
         } catch (HibernateException ex) {
@@ -49,6 +50,7 @@ public class FormationDAO {
             session.close();
         }
     }
+
     public Formation deleteFormation(Formation formation) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -63,5 +65,3 @@ public class FormationDAO {
         }
     }
 }
-    
-

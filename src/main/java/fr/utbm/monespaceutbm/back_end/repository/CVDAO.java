@@ -5,7 +5,7 @@
  */
 package fr.utbm.monespaceutbm.back_end.repository;
 
-import fr.utbm.monespaceutbm.back_end.entity.Departement;
+import fr.utbm.monespaceutbm.back_end.entity.Cv;
 import fr.utbm.monespaceutbm.back_end.tools.HibernateUtil;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -14,23 +14,23 @@ import org.hibernate.query.Query;
 
 /**
  *
- * @author danyk
+ * @author nzoda
  */
-public class DepartementDAO {
+public class CVDAO {
 
     private Session session;
 
-    public Departement addOrUpdateDepartement(Departement departement) {
+    public Cv addOrUpdateCv(Cv cv) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            if (departement.getIddep() != null) {
-                session.update(departement);
+            if (cv.getIdcv() != null) {
+                session.update(cv);
             } else {
-                departement.setIddep((Long) session.save(departement));
+                cv.setIdcv((Long) session.save(cv));
             }
             session.getTransaction().commit();
-            return departement;
+            return cv;
         } catch (HibernateException ex) {
             return null;
         } finally {
@@ -38,11 +38,11 @@ public class DepartementDAO {
         }
     }
 
-    public List<Departement> getDepartements() {
+    public List<Cv> getCvs() {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             Query query;
-            query = session.createQuery("FROM Departement");
+            query = session.createQuery("FROM Cv");
             return query.getResultList();
         } catch (HibernateException ex) {
             return null;
@@ -51,18 +51,17 @@ public class DepartementDAO {
         }
     }
 
-    public Departement deleteDepartement(Departement departement) {
+    public Cv deleteCv(Cv cv) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(departement);
+            session.delete(cv);
             session.getTransaction().commit();
-            return departement;
+            return cv;
         } catch (HibernateException ex) {
             return null;
         } finally {
             session.close();
         }
     }
-
 }

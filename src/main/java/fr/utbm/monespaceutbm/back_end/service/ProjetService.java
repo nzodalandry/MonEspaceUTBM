@@ -6,24 +6,22 @@
 package fr.utbm.monespaceutbm.back_end.service;
 
 import fr.utbm.monespaceutbm.back_end.entity.MessageError;
-import fr.utbm.monespaceutbm.back_end.entity.Utilisateur;
-import fr.utbm.monespaceutbm.back_end.repository.UserDAO;
+import fr.utbm.monespaceutbm.back_end.entity.Projet;
+import fr.utbm.monespaceutbm.back_end.repository.ProjetDAO;
 import java.util.List;
 
 /**
  *
  * @author nzoda
  */
-public abstract class UserService {
+public abstract class ProjetService {
 
-    static UserDAO UD = new UserDAO();
-    static Utilisateur u;
-    static List<Utilisateur> list;
+    static ProjetDAO PD = new ProjetDAO();
 
-    public static Utilisateur addOrUpdateUser(Utilisateur user) {
-        u = UD.addOrUpdateUser(user);
-        if (u != null) {
-            if (user.getIduser() != null) {
+    public static Projet addOrUpdateProjet(Projet projet) {
+        Projet p = PD.addOrUpdateProjet(projet);
+        if (p != null) {
+            if (p.getIdproj() != null) {
                 MessageError.setSuccess('U');
             } else {
                 MessageError.setSuccess('C');
@@ -31,11 +29,11 @@ public abstract class UserService {
         } else {
             MessageError.setErrorBD();
         }
-        return u;
+        return p;
     }
 
-    public static List<Utilisateur> getUsers() {
-        list = UD.getUsers();
+    public static List<Projet> getProjets() {
+        List<Projet> list = PD.getProjets();
         if (list != null) {
             if (list.isEmpty()) {
                 MessageError.setDataNotFound();
@@ -48,18 +46,14 @@ public abstract class UserService {
         return list;
     }
 
-    public static Utilisateur deleteUser(Utilisateur user) {
-        u = UD.deleteUser(user);
-        if (u != null) {
+    public static Projet deleteProjet(Projet projet) {
+        Projet p = PD.deleteProjet(projet);
+        if (p != null) {
             MessageError.setSuccess('D');
         } else {
             MessageError.setErrorBD();
         }
-        return u;
+        return p;
     }
 
-    public static Utilisateur find(Utilisateur user) {
-        u = UD.find(user);
-        return u;
-    }
 }

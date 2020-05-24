@@ -5,25 +5,23 @@
  */
 package fr.utbm.monespaceutbm.back_end.service;
 
+import fr.utbm.monespaceutbm.back_end.entity.Cv;
 import fr.utbm.monespaceutbm.back_end.entity.MessageError;
-import fr.utbm.monespaceutbm.back_end.entity.Utilisateur;
-import fr.utbm.monespaceutbm.back_end.repository.UserDAO;
+import fr.utbm.monespaceutbm.back_end.repository.CVDAO;
 import java.util.List;
 
 /**
  *
  * @author nzoda
  */
-public abstract class UserService {
+public abstract class CVService {
 
-    static UserDAO UD = new UserDAO();
-    static Utilisateur u;
-    static List<Utilisateur> list;
+    static CVDAO CD = new CVDAO();
 
-    public static Utilisateur addOrUpdateUser(Utilisateur user) {
-        u = UD.addOrUpdateUser(user);
-        if (u != null) {
-            if (user.getIduser() != null) {
+    public static Cv addOrUpdateCv(Cv cv) {
+        Cv c = CD.addOrUpdateCv(cv);
+        if (c != null) {
+            if (c.getIdcv() != null) {
                 MessageError.setSuccess('U');
             } else {
                 MessageError.setSuccess('C');
@@ -31,11 +29,11 @@ public abstract class UserService {
         } else {
             MessageError.setErrorBD();
         }
-        return u;
+        return c;
     }
 
-    public static List<Utilisateur> getUsers() {
-        list = UD.getUsers();
+    public static List<Cv> getCvs() {
+        List<Cv> list = CD.getCvs();
         if (list != null) {
             if (list.isEmpty()) {
                 MessageError.setDataNotFound();
@@ -48,18 +46,14 @@ public abstract class UserService {
         return list;
     }
 
-    public static Utilisateur deleteUser(Utilisateur user) {
-        u = UD.deleteUser(user);
-        if (u != null) {
+    public static Cv deleteCv(Cv cv) {
+        Cv c = CD.deleteCv(cv);
+        if (c != null) {
             MessageError.setSuccess('D');
         } else {
             MessageError.setErrorBD();
         }
-        return u;
+        return c;
     }
 
-    public static Utilisateur find(Utilisateur user) {
-        u = UD.find(user);
-        return u;
-    }
 }

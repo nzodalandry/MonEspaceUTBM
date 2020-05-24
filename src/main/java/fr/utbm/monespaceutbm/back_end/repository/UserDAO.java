@@ -17,9 +17,9 @@ import org.hibernate.query.Query;
  * @author nzoda
  */
 public class UserDAO {
-    
+
     private Session session;
-    
+
     public Utilisateur addOrUpdateUser(Utilisateur user) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -37,7 +37,7 @@ public class UserDAO {
             session.close();
         }
     }
-    
+
     public List<Utilisateur> getUsers() {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -50,7 +50,7 @@ public class UserDAO {
             session.close();
         }
     }
-    
+
     public Utilisateur deleteUser(Utilisateur user) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
@@ -64,8 +64,8 @@ public class UserDAO {
             session.close();
         }
     }
-    
-    public Utilisateur find(Utilisateur u){
+
+    public Utilisateur find(Utilisateur u) {
         return null;
     }
 }

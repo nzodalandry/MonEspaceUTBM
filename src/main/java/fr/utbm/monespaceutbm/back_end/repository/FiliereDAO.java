@@ -17,14 +17,14 @@ import org.hibernate.query.Query;
  * @author danyk
  */
 public class FiliereDAO {
-    
-     private Session session;
+
+    private Session session;
 
     public Filiere addOrUpdateFiliere(Filiere filiere) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            if (filiere.getIdfil()!= null) {
+            if (filiere.getIdfil() != null) {
                 session.update(filiere);
             } else {
                 filiere.setIdfil((Long) session.save(filiere));
@@ -50,5 +50,5 @@ public class FiliereDAO {
             session.close();
         }
     }
-    
+
 }

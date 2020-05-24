@@ -7,7 +7,6 @@ package fr.utbm.monespaceutbm.back_end.repository;
 
 import fr.utbm.monespaceutbm.back_end.entity.Privileges;
 import fr.utbm.monespaceutbm.back_end.entity.PrivilegesPK;
-import fr.utbm.monespaceutbm.back_end.entity.Utilisateur;
 import fr.utbm.monespaceutbm.back_end.tools.HibernateUtil;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -19,7 +18,8 @@ import org.hibernate.query.Query;
  * @author nzoda
  */
 public class PrivilegeDAO {
-     private Session session;
+
+    private Session session;
 
     public Privileges addOrUpdatePrivilege(Privileges privilege) {
         try {
@@ -39,7 +39,7 @@ public class PrivilegeDAO {
         }
     }
 
-    public List<Utilisateur> getPrivileges() {
+    public List<Privileges> getPrivileges() {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             Query query;
@@ -51,4 +51,19 @@ public class PrivilegeDAO {
             session.close();
         }
     }
+
+    public Privileges deletePrivilege(Privileges privilege) {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.delete(privilege);
+            session.getTransaction().commit();
+            return privilege;
+        } catch (HibernateException ex) {
+            return null;
+        } finally {
+            session.close();
+        }
+    }
+
 }

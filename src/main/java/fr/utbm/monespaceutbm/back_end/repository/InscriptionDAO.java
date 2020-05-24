@@ -5,7 +5,8 @@
  */
 package fr.utbm.monespaceutbm.back_end.repository;
 
-import fr.utbm.monespaceutbm.back_end.entity.Departement;
+import fr.utbm.monespaceutbm.back_end.entity.Inscription;
+import fr.utbm.monespaceutbm.back_end.entity.InscriptionPK;
 import fr.utbm.monespaceutbm.back_end.tools.HibernateUtil;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -14,23 +15,23 @@ import org.hibernate.query.Query;
 
 /**
  *
- * @author danyk
+ * @author nzoda
  */
-public class DepartementDAO {
+public class InscriptionDAO {
 
     private Session session;
 
-    public Departement addOrUpdateDepartement(Departement departement) {
+    public Inscription addOrUpdateInscription(Inscription inscription) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            if (departement.getIddep() != null) {
-                session.update(departement);
+            if (inscription.getInscriptionPK() != null) {
+                session.update(inscription);
             } else {
-                departement.setIddep((Long) session.save(departement));
+                inscription.setInscriptionPK((InscriptionPK) session.save(inscription));
             }
             session.getTransaction().commit();
-            return departement;
+            return inscription;
         } catch (HibernateException ex) {
             return null;
         } finally {
@@ -38,11 +39,11 @@ public class DepartementDAO {
         }
     }
 
-    public List<Departement> getDepartements() {
+    public List<Inscription> getInscriptions() {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             Query query;
-            query = session.createQuery("FROM Departement");
+            query = session.createQuery("FROM Inscription");
             return query.getResultList();
         } catch (HibernateException ex) {
             return null;
@@ -51,18 +52,17 @@ public class DepartementDAO {
         }
     }
 
-    public Departement deleteDepartement(Departement departement) {
+    public Inscription deleteInscription(Inscription inscription) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(departement);
+            session.delete(inscription);
             session.getTransaction().commit();
-            return departement;
+            return inscription;
         } catch (HibernateException ex) {
             return null;
         } finally {
             session.close();
         }
     }
-
 }

@@ -6,24 +6,22 @@
 package fr.utbm.monespaceutbm.back_end.service;
 
 import fr.utbm.monespaceutbm.back_end.entity.MessageError;
-import fr.utbm.monespaceutbm.back_end.entity.Utilisateur;
-import fr.utbm.monespaceutbm.back_end.repository.UserDAO;
+import fr.utbm.monespaceutbm.back_end.entity.TypeDeProjet;
+import fr.utbm.monespaceutbm.back_end.repository.TypeDeProjetDAO;
 import java.util.List;
 
 /**
  *
  * @author nzoda
  */
-public abstract class UserService {
+public abstract class TypeDeProjetService {
 
-    static UserDAO UD = new UserDAO();
-    static Utilisateur u;
-    static List<Utilisateur> list;
+    static TypeDeProjetDAO TP = new TypeDeProjetDAO();
 
-    public static Utilisateur addOrUpdateUser(Utilisateur user) {
-        u = UD.addOrUpdateUser(user);
-        if (u != null) {
-            if (user.getIduser() != null) {
+    public static TypeDeProjet addOrUpdateProjet(TypeDeProjet typeDeProjet) {
+        TypeDeProjet t = TP.addOrUpdateTypeDeProjet(typeDeProjet);
+        if (t != null) {
+            if (t.getIdtypeproj() != null) {
                 MessageError.setSuccess('U');
             } else {
                 MessageError.setSuccess('C');
@@ -31,11 +29,11 @@ public abstract class UserService {
         } else {
             MessageError.setErrorBD();
         }
-        return u;
+        return t;
     }
 
-    public static List<Utilisateur> getUsers() {
-        list = UD.getUsers();
+    public static List<TypeDeProjet> getProjets() {
+        List<TypeDeProjet> list = TP.getTypeDeProjets();
         if (list != null) {
             if (list.isEmpty()) {
                 MessageError.setDataNotFound();
@@ -48,18 +46,14 @@ public abstract class UserService {
         return list;
     }
 
-    public static Utilisateur deleteUser(Utilisateur user) {
-        u = UD.deleteUser(user);
-        if (u != null) {
+    public static TypeDeProjet deleteProjet(TypeDeProjet typeDeProjet) {
+        TypeDeProjet t = TP.deleteTypeDeProjet(typeDeProjet);
+        if (t != null) {
             MessageError.setSuccess('D');
         } else {
             MessageError.setErrorBD();
         }
-        return u;
+        return t;
     }
 
-    public static Utilisateur find(Utilisateur user) {
-        u = UD.find(user);
-        return u;
-    }
 }

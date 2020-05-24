@@ -6,7 +6,6 @@
 package fr.utbm.monespaceutbm.back_end.repository;
 
 import fr.utbm.monespaceutbm.back_end.entity.Role;
-import fr.utbm.monespaceutbm.back_end.entity.Utilisateur;
 import fr.utbm.monespaceutbm.back_end.tools.HibernateUtil;
 import java.util.List;
 import org.hibernate.HibernateException;

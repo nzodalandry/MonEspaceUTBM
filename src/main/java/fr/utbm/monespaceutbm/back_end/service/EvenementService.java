@@ -5,25 +5,24 @@
  */
 package fr.utbm.monespaceutbm.back_end.service;
 
+import fr.utbm.monespaceutbm.back_end.entity.Evenement;
 import fr.utbm.monespaceutbm.back_end.entity.MessageError;
-import fr.utbm.monespaceutbm.back_end.entity.Utilisateur;
-import fr.utbm.monespaceutbm.back_end.repository.UserDAO;
+import fr.utbm.monespaceutbm.back_end.repository.EvenementDAO;
 import java.util.List;
 
 /**
  *
  * @author nzoda
  */
-public abstract class UserService {
+public abstract class EvenementService {
+        static EvenementDAO ED = new EvenementDAO();
+    static Evenement e;
+    static List<Evenement> list;
 
-    static UserDAO UD = new UserDAO();
-    static Utilisateur u;
-    static List<Utilisateur> list;
-
-    public static Utilisateur addOrUpdateUser(Utilisateur user) {
-        u = UD.addOrUpdateUser(user);
-        if (u != null) {
-            if (user.getIduser() != null) {
+    public static Evenement addOrUpdateEvenement(Evenement evenement) {
+        e = ED.addOrUpdateEvenement(evenement);
+        if (e != null) {
+            if (evenement.getIdevt() != null) {
                 MessageError.setSuccess('U');
             } else {
                 MessageError.setSuccess('C');
@@ -31,11 +30,11 @@ public abstract class UserService {
         } else {
             MessageError.setErrorBD();
         }
-        return u;
+        return e;
     }
 
-    public static List<Utilisateur> getUsers() {
-        list = UD.getUsers();
+    public static List<Evenement> getEvenements() {
+        list = ED.getEvenements();
         if (list != null) {
             if (list.isEmpty()) {
                 MessageError.setDataNotFound();
@@ -48,18 +47,13 @@ public abstract class UserService {
         return list;
     }
 
-    public static Utilisateur deleteUser(Utilisateur user) {
-        u = UD.deleteUser(user);
-        if (u != null) {
+    public static Evenement deleteEvenement(Evenement evenement) {
+        e = ED.deleteEvenement(evenement);
+        if (e != null) {
             MessageError.setSuccess('D');
         } else {
             MessageError.setErrorBD();
         }
-        return u;
-    }
-
-    public static Utilisateur find(Utilisateur user) {
-        u = UD.find(user);
-        return u;
+        return e;
     }
 }
