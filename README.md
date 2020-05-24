@@ -6,7 +6,7 @@ TO DO
 
 Landry
 
-~~ PrivilegeService
+~~PrivilegeService~~
 # CvDAO
 # CvService
 # ProjetDAO
