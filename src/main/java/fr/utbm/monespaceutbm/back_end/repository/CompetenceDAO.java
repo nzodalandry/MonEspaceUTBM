@@ -5,7 +5,7 @@
  */
 package fr.utbm.monespaceutbm.back_end.repository;
 
-import fr.utbm.monespaceutbm.back_end.entity.Role;
+import fr.utbm.monespaceutbm.back_end.entity.Competence;
 import fr.utbm.monespaceutbm.back_end.tools.HibernateUtil;
 import java.util.List;
 import org.hibernate.HibernateException;
@@ -14,23 +14,23 @@ import org.hibernate.query.Query;
 
 /**
  *
- * @author nzoda
+ * @author danyk
  */
-public class RoleDAO {
-
+public class CompetenceDAO {
+    
     private Session session;
 
-    public Role addOrUpdateRole(Role role) {
+    public Competence addOrUpdateCompetence(Competence competence) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            if (role.getIdrole() != null) {
-                session.update(role);
+            if (competence.getIdcomp() != null) {
+                session.update(competence);
             } else {
-                role.setIdrole((Long) session.save(role));
+                competence.setIdcomp((Long) session.save(competence));
             }
             session.getTransaction().commit();
-            return role;
+            return competence;
         } catch (HibernateException ex) {
             return null;
         } finally {
@@ -38,11 +38,11 @@ public class RoleDAO {
         }
     }
 
-    public List<Role> getRoles() {
+    public List<Competence> getCompetences() {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             Query query;
-            query = session.createQuery("FROM Role");
+            query = session.createQuery("FROM Competence");
             return query.list();
         } catch (HibernateException ex) {
             return null;
@@ -51,18 +51,18 @@ public class RoleDAO {
         }
     }
 
-    public Role deleteRole(Role role) {
+    public Competence deleteCompetence(Competence competence) {
         try {
             session = HibernateUtil.getSessionFactory().openSession();
             session.beginTransaction();
-            session.delete(role);
+            session.delete(competence);
             session.getTransaction().commit();
-            return role;
+            return competence;
         } catch (HibernateException ex) {
             return null;
         } finally {
             session.close();
         }
     }
-    }
-
+    
+}
