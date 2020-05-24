@@ -46,5 +46,13 @@ public abstract class FiliereService {
         }
         return list;
     }
-
+    public static Filiere deleteFiliere(Filiere filiere) {
+        Filiere f = FD.deleteFiliere(filiere);
+        if (f != null) {
+            MessageError.setSuccess('D');
+        } else {
+            MessageError.setErrorBD();
+        }
+        return f;
+    }
 }

@@ -51,4 +51,18 @@ public class FiliereDAO {
         }
     }
 
+    public Filiere deleteFiliere(Filiere filiere) {
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.delete(filiere);
+            session.getTransaction().commit();
+            return filiere;
+        } catch (HibernateException ex) {
+            return null;
+        } finally {
+            session.close();
+        }
+    }
+
 }
