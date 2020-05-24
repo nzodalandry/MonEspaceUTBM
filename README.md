@@ -19,12 +19,12 @@
 
 # Daniele
 
-~~RoleService ~~
+~~RoleService~~
 ~~CentreInteretDAO~~
 ~~CentreInteretService~~
 ~~CompetenceDAO~~
 ~~CompetenceService~~
 ~~LangueDAO~~
-~~éLangueService~~
+~~LangueService~~
 ~~ExperienceDAO~~
 ~~ExperienceService~~
