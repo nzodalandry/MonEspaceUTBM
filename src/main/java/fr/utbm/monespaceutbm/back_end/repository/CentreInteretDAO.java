@@ -64,5 +64,4 @@ public class CentreInteretDAO {
             session.close();
         }
     }
-    }
-
+}
